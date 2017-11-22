@@ -8,13 +8,14 @@ public abstract class CheatCode extends Strategy
 
     private boolean isTeamPlayer = true;
 
+    @Override
     public int nextMove()
     {
         tick++;
         if(isTeamPlayer) {
             int tickResponse = tick - code.length + 1;
             if (tick < code.length) {
-                if(opponentLastMove != CheatCode.code[tick])
+                if(opponentLastMove != code[tick])
                 {
                     isTeamPlayer = false;
                 }

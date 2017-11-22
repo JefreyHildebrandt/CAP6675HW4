@@ -28,7 +28,7 @@ public class RunIPD extends Object
          }  /* for i */
 
       player1 = new ExampleExtendedCheatCode();
-      player2 = new StrategyTitForTat();
+      player2 = new TeamPlayer();
       ipd = new IteratedPD(player1, player2);
 
       ipd.runSteps(maxSteps);
