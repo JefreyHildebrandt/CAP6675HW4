@@ -1,8 +1,8 @@
 public abstract class CheatCode extends Strategy
 {
-    public static final int[] code = new int[]{1, 1, 0, 0, 1, 1, 1, 1, 0, 1};
+    public static final int[] code = new int[]{1, 1, 0, 0, 1, 1, 1, 0};
 
-    public static final int[] responseCode = new int[]{0, 0, 1, 1, 1};
+    public static final int[] responseCode = new int[]{1, 1, 1, 0, 0};
 
     protected int tick = -1;
 
@@ -12,10 +12,16 @@ public abstract class CheatCode extends Strategy
     public int nextMove()
     {
         tick++;
-        if(isTeamPlayer) {
-            int tickResponse = tick - code.length + 1;
-            if (tick < code.length) {
-                if(opponentLastMove != code[tick])
+        if(tick == 0)
+        {
+            return nextNextMove();
+        }
+        int curOpponentTick = tick - 1;
+        if(isTeamPlayer)
+        {
+            int tickResponse = curOpponentTick - code.length;
+            if (curOpponentTick < code.length) {
+                if(opponentLastMove != code[curOpponentTick])
                 {
                     isTeamPlayer = false;
                 }
@@ -27,7 +33,7 @@ public abstract class CheatCode extends Strategy
             }
             else
             {
-                if(opponentLastMove == 1)
+                if(opponentLastMove == 0)
                 {
                     isTeamPlayer = false;
                     return nextNextMove();
