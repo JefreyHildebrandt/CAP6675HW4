@@ -1,9 +1,9 @@
-public class TeamPlayer extends Strategy
+public class StrategyHildebrandt extends Strategy
 {
     private int tick = -1;
     private boolean isTeamPlayer = true;
 
-    TeamPlayer()
+    StrategyHildebrandt()
     {
         name = "Team Player";
     }

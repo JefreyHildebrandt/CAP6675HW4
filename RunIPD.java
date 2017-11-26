@@ -27,8 +27,8 @@ public class RunIPD extends Object
             }  /* if */
          }  /* for i */
 
-      player1 = new ExampleExtendedCheatCode();
-      player2 = new TeamPlayer();
+      player1 = new StrategyRandom();
+      player2 = new StrategyHildebrandt();
       ipd = new IteratedPD(player1, player2);
 
       ipd.runSteps(maxSteps);
