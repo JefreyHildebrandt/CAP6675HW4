@@ -12,7 +12,7 @@ public class RunIPD extends Object
    public static void main(String args[])
       {
       int i;
-      int maxSteps = 500;
+      int maxSteps = 5000;
 
       Strategy player1, player2;
       IteratedPD ipd;
@@ -27,7 +27,7 @@ public class RunIPD extends Object
             }  /* if */
          }  /* for i */
 
-      player1 = new StrategyRandom();
+      player1 = new ExampleExtendedCheatCode();
       player2 = new StrategyHildebrandt();
       ipd = new IteratedPD(player1, player2);
 
