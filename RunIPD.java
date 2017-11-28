@@ -27,7 +27,7 @@ public class RunIPD extends Object
             }  /* if */
          }  /* for i */
 
-      player1 = new StrategyHildebrandt();
+      player1 = new StrategyRandom();
       player2 = new StrategyBelcher();
       ipd = new IteratedPD(player1, player2);
 
