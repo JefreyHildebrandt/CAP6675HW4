@@ -3,6 +3,12 @@ public class StrategyHildebrandt extends Strategy
     private int tick = -1;
     private boolean isTeamPlayer = true;
 
+    // the potential set of commands sent by team player
+    public static final int[] code = new int[]{1, 1, 0, 0, 1, 1, 1, 0};
+
+    // the response sent by this class once it is determined to be team player
+    public static final int[] responseCode = new int[]{1, 1, 1, 0, 0};
+
     StrategyHildebrandt()
     {
         name = "Team Player";
@@ -14,15 +20,15 @@ public class StrategyHildebrandt extends Strategy
         if(isTeamPlayer)
         {
             tick++;
-            int tickResponse = tick - CheatCode.code.length - 2;
+            int tickResponse = tick - code.length - 2;
             // sends out the code
-            if (tick < CheatCode.code.length) {
-                return CheatCode.code[tick];
+            if (tick < code.length) {
+                return code[tick];
             }
-            else if (tickResponse < CheatCode.responseCode.length && tickResponse >= 0)
+            else if (tickResponse < responseCode.length && tickResponse >= 0)
             {
                 // verifies the opponent is CheatCode
-                if (opponentLastMove != CheatCode.responseCode[tickResponse])
+                if (opponentLastMove != responseCode[tickResponse])
                 {
                     isTeamPlayer = false;
                 }
@@ -33,7 +39,7 @@ public class StrategyHildebrandt extends Strategy
             }
             else
             {
-                // if the opponent doesn't constantly attack, assume the opponent is not CheatCode and got lucky
+                // if the opponent doesn't constantly attack, assume the opponent is not a teammate and got lucky
                 // guessing the code
                 if(opponentLastMove != 0)
                 {
